@@ -1,0 +1,6 @@
+Juan Maria Pedro Rosana
+2023-01-01 Pedro 1000 ~
+2023-01-03 Maria 2000 Maria Juan
+2023-01-03 Rosana 1500 ~ Pedro 
+2023-03-01 * Alejandro
+2023-03-05 Maria 2500 ~

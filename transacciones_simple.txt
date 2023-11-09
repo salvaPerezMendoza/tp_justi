@@ -1,0 +1,27 @@
+Jennifer Laura Diana Michelle
+2022-01-01 Laura 82384 Michelle
+2022-01-03 Laura 45017 Jennifer
+2022-01-05 Jennifer 5760 ~ Diana Michelle
+2022-01-07 Jennifer 12061 ~ Laura
+2022-01-09 Jennifer 34396 ~ 
+2022-01-09 Laura 99333 ~ 
+2022-01-14 Diana 65636 ~ Michelle Laura
+2022-01-15 Diana 42668 Jennifer
+2022-01-20 Jennifer 36202 ~ 
+2022-01-23 * Gary
+2022-01-24 Jennifer 29707 ~ Michelle
+2022-01-24 Diana 33573 ~ Michelle Laura
+2022-01-26 Laura 50921 ~ Diana
+2022-01-29 Michelle 74806 Jennifer Laura
+2022-02-01 Michelle 83101 ~
+2022-02-04 Jennifer 36629 Laura
+2022-02-05 Diana 81890 ~ Michelle Laura
+2022-02-06 Laura 32857 ~ Michelle
+2022-02-07 Laura 56328 Jennifer
+2022-02-11 Laura 3499 ~ Diana
+2022-02-12 Jennifer 17097 ~ Laura Diana
+2022-02-17 Diana 42965 ~ Michelle Jennifer
+2022-02-20 Laura 40887 ~ Diana
+2022-02-20 Jennifer 6057 ~ Laura Diana
+2022-02-20 Laura 58771 Michelle Gary Diana
+2022-02-21 Gary 30000 ~
