@@ -32,7 +32,7 @@ def comparar_fechas(fecha, fechaLimite):
 def analisar_agregar(datos, nombres, deudas):
     # Si es "~", puede haberse dividido entre todos o todos menos alguien
     if datos[3] == "~":
-            # Si tiene solo 4 datos, se dividió entre todos
+            # Si tiene solo 4 datos, se dividi‚Äî entre todos
         if len(datos) == 4:
             
                 # Se distribuye entre todos
@@ -50,7 +50,7 @@ def analisar_agregar(datos, nombres, deudas):
                     # Buscar quien pago
                 pagador = datos[1]
                 
-                    # Buscar quiénes son los que no pagan
+                    # Buscar qui≈Ωnes son los que no pagan
                 excluidos = datos[4:]
                 
                     # Calcula la cantidad que se divide entre todos menos los excluidos
@@ -72,7 +72,7 @@ def analisar_agregar(datos, nombres, deudas):
                 # Buscar quien pago
             pagador = datos[1]
             
-                # Buscar quiénes son los que pagan
+                # Buscar qui≈Ωnes son los que pagan
             pagan = datos[3:]
             
                 # Calcula la cantidad que se divide entre los que pagan
@@ -170,7 +170,7 @@ def graficar_evolucion_deudas(evolucionDeudas):
             # Lista que contiene la deuda de cada persona en cada fecha
             # Lo que logro con esta lista, es que si el nombre de la persona no aparece todavia -> no se agrego todavia -> no se va a graficar, recien cuando aparezca se empieza
        deuda_por_persona = [registro.get(nombre, None) for registro in deudas]
-           # El eje x, el primero, representa las fechas, el eje y, el segundo, representa la deuda en pesos, y label=nombre se utiliza para etiquetar la línea con el nombre de la persona
+           # El eje x, el primero, representa las fechas, el eje y, el segundo, representa la deuda en pesos, y label=nombre se utiliza para etiquetar la l‚Äônea con el nombre de la persona
            # Al estar en un bucle este va armando el grafico fecha a fecha modificando el valor de deuda
        plt.plot(fechas, deuda_por_persona, label=nombre)
         
@@ -220,7 +220,7 @@ nombre_archivo = 'transacciones_largo.txt'
 # El ususario ingresa la fecha hasta la cual analizar
 fechaLimite = input("Ingrese una fecha limite en formato AAAA-MM-DD: ")
 
-#Si la fecha es anterior a la primer fecha del archivo, debe imprimir por pantalla que la fecha ingresada no es v·lida
+#Si la fecha es anterior a la primer fecha del archivo, debe imprimir por pantalla que la fecha ingresada no es v√°lida
 if analisarFecha(nombre_archivo, fechaLimite) != 1:
 
     # Procesar el archivo para obtener la evolucion de las deudas
@@ -231,11 +231,8 @@ if analisarFecha(nombre_archivo, fechaLimite) != 1:
     
     # Llamar a la funcion para graficar quienes deben y quienes cobran en la fecha especificada
     graficar_pagan_cobran(evolucionDeudas, fechaLimiteArchivo)
-    
-    print(evolucionDeudas[fechaLimiteArchivo])
-    print(evolucionDeudas["2022-01-03"])
-    print(evolucionDeudas["2022-01-08"])
+        
 else:
-    print("Fecha ingresada no es v·lida")
+    print("Fecha ingresada no es v√°lida")
 
 
