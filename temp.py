@@ -20,8 +20,12 @@ def agregar_nuevo_nombre(datos, nombres, deudas):
 def comparar_fechas(fecha, fechaLimite):
         # Usando la libreria datetime convierto las fechas a objeto de fecha
     fecha1 = datetime.strptime(fecha, '%Y-%m-%d')
-    fecha2 = datetime.strptime(fechaLimite, '%Y-%m-%d')
-    
+        # Como la fecha paso antes por la funcion verificar_fecha capas ya esta en tipo datetime por lo que de ser asi no la modifico
+    try:
+        fecha2 = datetime.strptime(fechaLimite, '%Y-%m-%d')
+    except TypeError:
+        fecha2 = fechaLimite
+        
         # Comparar si la fecha ya ha pasado y devuelvo 0/1 para saber el resultado
     if fecha1 <= fecha2:
         return 0
@@ -32,7 +36,7 @@ def comparar_fechas(fecha, fechaLimite):
 def analisar_agregar(datos, nombres, deudas):
     # Si es "~", puede haberse dividido entre todos o todos menos alguien
     if datos[3] == "~":
-            # Si tiene solo 4 datos, se dividi— entre todos
+            # Si tiene solo 4 datos, se dividi entre todos
         if len(datos) == 4:
             
                 # Se distribuye entre todos
@@ -50,7 +54,7 @@ def analisar_agregar(datos, nombres, deudas):
                     # Buscar quien pago
                 pagador = datos[1]
                 
-                    # Buscar quiŽnes son los que no pagan
+                    # Buscar quines son los que no pagan
                 excluidos = datos[4:]
                 
                     # Calcula la cantidad que se divide entre todos menos los excluidos
@@ -72,7 +76,7 @@ def analisar_agregar(datos, nombres, deudas):
                 # Buscar quien pago
             pagador = datos[1]
             
-                # Buscar quiŽnes son los que pagan
+                # Buscar quines son los que pagan
             pagan = datos[3:]
             
                 # Calcula la cantidad que se divide entre los que pagan
@@ -91,6 +95,20 @@ def analisar_agregar(datos, nombres, deudas):
 def mostrar_datos(deudas):
     print(deudas)
     
+def verificar_fecha(fecha):
+    
+        # Intenta convertir la fecha en un objeto datetime
+    try:
+        fechaVerificada = datetime.strptime(fecha, '%Y-%m-%d')
+        return fechaVerificada
+        
+        # Si la fecha no tiene el formato correcto, pide al usuario que ingrese una nueva fecha
+    except ValueError:
+        print("La fecha ingresada no tiene el formato correcto. Por favor, ingrese nuevamente.")
+        nuevaFecha = input("Ingrese una fecha con formato AAA-MM-DD: ")
+        return verificar_fecha(nuevaFecha)
+        
+    
 def analisarFecha(nombre_archivo, fechaLimite):
         # Abro el archivo
     archivo = open(nombre_archivo)
@@ -106,6 +124,7 @@ def analisarFecha(nombre_archivo, fechaLimite):
         # Analizo si la fecha a estudiar tiene sentido
     if comparar_fechas(datos[0], fechaLimite) == 1:
         return 1
+    
     
 
 def procesar_archivo(nombre_archivo, fechaLimite):
@@ -170,7 +189,7 @@ def graficar_evolucion_deudas(evolucionDeudas):
             # Lista que contiene la deuda de cada persona en cada fecha
             # Lo que logro con esta lista, es que si el nombre de la persona no aparece todavia -> no se agrego todavia -> no se va a graficar, recien cuando aparezca se empieza
        deuda_por_persona = [registro.get(nombre, None) for registro in deudas]
-           # El eje x, el primero, representa las fechas, el eje y, el segundo, representa la deuda en pesos, y label=nombre se utiliza para etiquetar la l’nea con el nombre de la persona
+           # El eje x, el primero, representa las fechas, el eje y, el segundo, representa la deuda en pesos, y label=nombre se utiliza para etiquetar la lnea con el nombre de la persona
            # Al estar en un bucle este va armando el grafico fecha a fecha modificando el valor de deuda
        plt.plot(fechas, deuda_por_persona, label=nombre)
         
@@ -220,18 +239,21 @@ nombre_archivo = 'transacciones_largo.txt'
 # El ususario ingresa la fecha hasta la cual analizar
 fechaLimite = input("Ingrese una fecha limite en formato AAAA-MM-DD: ")
 
+# Analizo que la fecha verifique el formato AAAA-MM-DD
+fechaVerificada = verificar_fecha(fechaLimite)
+
 #Si la fecha es anterior a la primer fecha del archivo, debe imprimir por pantalla que la fecha ingresada no es válida
-if analisarFecha(nombre_archivo, fechaLimite) != 1:
+if analisarFecha(nombre_archivo, fechaVerificada) != 1:
 
     # Procesar el archivo para obtener la evolucion de las deudas
-    evolucionDeudas, fechaLimiteArchivo = procesar_archivo(nombre_archivo, fechaLimite)
+    evolucionDeudas, fechaLimiteArchivo = procesar_archivo(nombre_archivo, fechaVerificada)
     
     # Llamar a la funcion para graficar la evolucion de las deudas
     graficar_evolucion_deudas(evolucionDeudas)
     
     # Llamar a la funcion para graficar quienes deben y quienes cobran en la fecha especificada
     graficar_pagan_cobran(evolucionDeudas, fechaLimiteArchivo)
-        
+    
 else:
     print("Fecha ingresada no es válida")
 
